@@ -1,0 +1,49 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  font-family: Arial, sans-serif;
+}
+
+#solarCanvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+#control-panel {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  color: white;
+  border-radius: 8px;
+  z-index: 10;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+#control-panel label {
+  font-size: 14px;
+}
+
+#control-panel input[type="range"] {
+  width: 120px;
+}
+
+#toggle-animation {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  padding: 8px 12px;
+  border: none;
+  background: #ffffff10;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
