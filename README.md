@@ -1,4 +1,5 @@
 ﻿# Solar-System
-<img width="649" height="561" alt="image" src="https://github.com/user-attachments/assets/28c4ae21-4b7c-4038-9ba6-e9f5ae3b5533" />
+<img width="1901" height="858" alt="image" src="https://github.com/user-attachments/assets/c33a8674-2c15-423e-b9e3-4fa62e7433f8" />
+
 
 
