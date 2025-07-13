@@ -1,6 +1,7 @@
 ﻿# Solar-System
- <img width="1903" height="880" alt="image" src="https://github.com/user-attachments/assets/a7f6f805-f86c-47f7-8c03-ae222c6ce25f" />
-<img width="676" height="598" alt="image" src="https://github.com/user-attachments/assets/efa36ae1-c76f-464d-b274-25550b2fb627" />
+<img width="1898" height="912" alt="image" src="https://github.com/user-attachments/assets/17c79a57-d44f-4a50-9c10-7e85886c4513" />
+<img width="835" height="594" alt="image" src="https://github.com/user-attachments/assets/bb0f6427-d1d0-47f2-9671-c2245a772e79" />
+
 
 
 
