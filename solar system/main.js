@@ -52,6 +52,14 @@ planets.forEach(p => {
   planetMeshes.push({ name: p.name, mesh, distance: p.distance });
   planetSpeeds[p.name] = p.speed;
   planetAngles[p.name] = 0;
+  const orbitGeo = new THREE.RingGeometry(p.distance - 0.05, p.distance + 0.05, 64);
+  const orbitMat = new THREE.MeshBasicMaterial({
+    color: 0x999999,
+    side: THREE.DoubleSide
+  });
+  const orbit = new THREE.Mesh(orbitGeo, orbitMat);
+  orbit.rotation.x = Math.PI / 2;
+  scene.add(orbit);
 
   // Slider
   const label = document.createElement('label');
