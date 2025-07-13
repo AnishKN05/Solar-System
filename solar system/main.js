@@ -1,4 +1,5 @@
 
+
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000);
 
@@ -52,9 +53,37 @@ function createLabel(text, color = "#ffffff") {
   return sprite;
 }
 
-// Sun
-const sun = new THREE.Mesh(new THREE.SphereGeometry(4, 32, 32), new THREE.MeshBasicMaterial({ color: 0xffff00 }));
+// Create glow sprite for Sun
+function createSunGlow() {
+  const glowCanvas = document.createElement("canvas");
+  glowCanvas.width = 256;
+  glowCanvas.height = 256;
+  const ctx = glowCanvas.getContext("2d");
+
+  const gradient = ctx.createRadialGradient(128, 128, 20, 128, 128, 128);
+  gradient.addColorStop(0, "rgba(255,255,0,1)");
+  gradient.addColorStop(0.2, "rgba(255,255,0,0.4)");
+  gradient.addColorStop(1, "rgba(255,255,0,0)");
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, 256, 256);
+
+  const texture = new THREE.CanvasTexture(glowCanvas);
+  const material = new THREE.SpriteMaterial({ map: texture, transparent: true, depthWrite: false });
+  const sprite = new THREE.Sprite(material);
+  sprite.scale.set(20, 20, 1);
+  return sprite;
+}
+
+// Sun + Glow
+const sun = new THREE.Mesh(
+  new THREE.SphereGeometry(4, 32, 32),
+  new THREE.MeshBasicMaterial({ color: 0xffff00 })
+);
 scene.add(sun);
+
+const sunGlow = createSunGlow();
+sun.add(sunGlow);
+
 const sunLabel = createLabel("Sun", "#ffaa00");
 sunLabel.position.set(0, 6, 0);
 scene.add(sunLabel);
@@ -133,9 +162,10 @@ function animate() {
       const z = p.distance * Math.sin(planetAngles[p.name]);
       p.mesh.position.set(x, 0, z);
       p.label.position.set(x, 4, z);
-      p.mesh.rotation.y += 0.01; // axial rotation
+      p.mesh.rotation.y += 0.01; // planet axial spin
     });
   }
   renderer.render(scene, camera);
 }
 animate();
+
