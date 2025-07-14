@@ -1,10 +1,10 @@
 
-
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000);
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 100, 0);
+// Angled camera view
+camera.position.set(50, 60, 100);
 camera.lookAt(0, 0, 0);
 
 const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("solarCanvas"), antialias: true });
@@ -168,4 +168,3 @@ function animate() {
   renderer.render(scene, camera);
 }
 animate();
-
