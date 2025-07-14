@@ -5,19 +5,90 @@
   <title>3D Solar System</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      color: white;
+      z-index: 10;
+    }
+
+    #control-panel {
+      position: absolute;
+      top: 60px;
+      left: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      z-index: 10;
+    }
+
+    #toggle-animation {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #ffaa00;
+      color: black;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    #info-panel {
+      position: absolute;
+      top: 80px;
+      right: 20px;
+      width: 250px;
+      background: rgba(0, 0, 0, 0.85);
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      display: none;
+      z-index: 10;
+    }
+
+    canvas {
+      display: block;
+    }
+  </style>
 </head>
 <body>
   <h1>3D Solar System</h1>
   <div id="control-panel">
     <!-- Speed sliders will be inserted by JS -->
   </div>
+
   <button id="toggle-animation">Pause</button>
+  <div id="info-panel"></div>
   <canvas id="solarCanvas"></canvas>
 
   <!-- Three.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js"></script>
-  <!-- OrbitControls (for camera rotation - optional) -->
   <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/examples/js/controls/OrbitControls.js"></script>
-  <script src="main.js"></script>
+
+  <!-- Your main logic -->
+  <script type="module" src="main.js"></script>
+  <div id="planet-popup" style="display: none;">
+  <div id="popup-content">
+    <span id="close-popup">&times;</span>
+    <h2 id="planet-name"></h2>
+    <p><strong>Distance from Sun:</strong> <span id="planet-distance"></span> AU</p>
+    <p><strong>Size:</strong> <span id="planet-size"></span></p>
+    <p><strong>Moons:</strong> <span id="planet-moons"></span></p>
+    <p><strong>Habitable:</strong> <span id="planet-habitable"></span></p>
+  </div>
+</div>
+
 </body>
 </html>

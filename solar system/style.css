@@ -47,3 +47,29 @@ html, body {
   border-radius: 5px;
   cursor: pointer;
 }
+#planet-popup {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1a;
+  color: white;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  z-index: 1000;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+#popup-content {
+  position: relative;
+  max-width: 300px;
+}
+
+#close-popup {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
