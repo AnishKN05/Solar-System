@@ -31,10 +31,9 @@
       z-index: 10;
     }
 
-    #toggle-animation {
+    #toggle-animation, #explain-button {
       position: absolute;
       top: 20px;
-      right: 20px;
       padding: 10px 20px;
       font-size: 16px;
       border: none;
@@ -43,6 +42,14 @@
       color: black;
       cursor: pointer;
       z-index: 10;
+    }
+
+    #toggle-animation {
+      right: 130px;
+    }
+
+    #explain-button {
+      right: 20px;
     }
 
     #planet-popup {
@@ -71,8 +78,35 @@
       font-size: 20px;
     }
 
+    #explanation-popup {
+      position: absolute;
+      top: 140px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 420px;
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      display: none;
+      z-index: 30;
+    }
+
+    #close-explanation {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      cursor: pointer;
+      color: white;
+      font-size: 20px;
+    }
+
     canvas {
       display: block;
+    }
+
+    audio {
+      display: none;
     }
   </style>
 </head>
@@ -81,6 +115,8 @@
 
   <div id="control-panel"></div>
   <button id="toggle-animation">Pause</button>
+  <button id="explain-button">Explain</button>
+
   <canvas id="solarCanvas"></canvas>
 
   <!-- Planet Info Popup -->
@@ -92,14 +128,62 @@
     <p><strong>Size:</strong> <span id="planet-size"></span></p>
     <p><strong>Moons:</strong> <span id="planet-moons"></span></p>
     <p><strong>Habitable:</strong> <span id="planet-habitable"></span></p>
-    
   </div>
 
-  <!-- Three.js CDN -->
+  <!-- Explanation Popup -->
+  <div id="explanation-popup">
+    <span id="close-explanation">&times;</span>
+    <h2>How Were Planets and Orbits Created?</h2>
+    <p>
+      Around 4.6 billion years ago, our solar system formed from a rotating cloud of gas and dust called a solar nebula.
+      Gravity caused the nebula to collapse and spin, forming the Sun at the center.
+    </p>
+    <p>
+      Remaining material clumped together through accretion, creating planetesimals, then protoplanets, and finally the planets we know today.
+      The conservation of angular momentum caused them to orbit the Sun in a flat disk-like plane.
+    </p>
+    <p>
+      Heavier elements formed rocky inner planets, while lighter gases formed giant outer planets like Jupiter and Saturn.
+    </p>
+  </div>
+
+  <!-- Hidden Narration Audio -->
+  <audio id="explanation-audio" preload="auto">
+    <source src="explanation.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Three.js -->
   <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/examples/js/controls/OrbitControls.js"></script>
-
-  <!-- Main logic -->
   <script type="module" src="main.js"></script>
+
+  <!-- Audio Control Script -->
+  <script>
+    const explainBtn = document.getElementById("explain-button");
+    const explanationPopup = document.getElementById("explanation-popup");
+    const closeExplain = document.getElementById("close-explanation");
+    const audio = document.getElementById("explanation-audio");
+
+    explainBtn.onclick = () => {
+      explanationPopup.style.display = "block";
+      audio.currentTime = 0;
+      const playPromise = audio.play();
+
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          // success
+        }).catch(err => {
+          console.warn("Auto-play failed (browser policy):", err);
+        });
+      }
+    };
+
+    closeExplain.onclick = () => {
+      explanationPopup.style.display = "none";
+      audio.pause();
+      audio.currentTime = 0;
+    };
+  </script>
 </body>
 </html>

@@ -73,3 +73,29 @@ html, body {
   font-size: 24px;
   cursor: pointer;
 }
+#explanation-popup {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 30;
+  display: none;
+}
+
+#explanation-content {
+  position: relative;
+}
+
+#close-explanation {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+}
