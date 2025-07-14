@@ -1,5 +1,4 @@
 
-
 import { displayPlanetInfo } from './planetInfo.js';
 
 const scene = new THREE.Scene();
@@ -71,6 +70,7 @@ const sun = new THREE.Mesh(
 sun.userData = {
   name: "Sun",
   size: "1.39 million km",
+  distanceFromSun: "0 km (center)",
   moons: 0,
   habitable: false,
   description: "The Sun is a G-type main-sequence star that is the center of our solar system."

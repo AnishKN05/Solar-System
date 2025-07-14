@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>3D Solar System</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       margin: 0;
@@ -45,17 +45,30 @@
       z-index: 10;
     }
 
-    #info-panel {
+    #planet-popup {
       position: absolute;
-      top: 80px;
+      top: 100px;
       right: 20px;
-      width: 250px;
-      background: rgba(0, 0, 0, 0.85);
+      width: 300px;
+      background-color: rgba(0, 0, 0, 0.85);
       color: white;
-      padding: 15px;
+      padding: 20px;
       border-radius: 10px;
       display: none;
-      z-index: 10;
+      z-index: 20;
+    }
+
+    #planet-popup h2 {
+      margin-top: 0;
+    }
+
+    #close-popup {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      cursor: pointer;
+      color: white;
+      font-size: 20px;
     }
 
     canvas {
@@ -65,30 +78,28 @@
 </head>
 <body>
   <h1>3D Solar System</h1>
-  <div id="control-panel">
-    <!-- Speed sliders will be inserted by JS -->
-  </div>
 
+  <div id="control-panel"></div>
   <button id="toggle-animation">Pause</button>
-  <div id="info-panel"></div>
   <canvas id="solarCanvas"></canvas>
+
+  <!-- Planet Info Popup -->
+  <div id="planet-popup">
+    <span id="close-popup">&times;</span>
+    <h2 id="planet-name">Planet Name</h2>
+    <p><strong>Description:</strong> <span id="planet-description"></span></p>
+    <p><strong>Distance from Sun:</strong> <span id="planet-distance"></span></p>
+    <p><strong>Size:</strong> <span id="planet-size"></span></p>
+    <p><strong>Moons:</strong> <span id="planet-moons"></span></p>
+    <p><strong>Habitable:</strong> <span id="planet-habitable"></span></p>
+    
+  </div>
 
   <!-- Three.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/examples/js/controls/OrbitControls.js"></script>
 
-  <!-- Your main logic -->
+  <!-- Main logic -->
   <script type="module" src="main.js"></script>
-  <div id="planet-popup" style="display: none;">
-  <div id="popup-content">
-    <span id="close-popup">&times;</span>
-    <h2 id="planet-name"></h2>
-    <p><strong>Distance from Sun:</strong> <span id="planet-distance"></span> AU</p>
-    <p><strong>Size:</strong> <span id="planet-size"></span></p>
-    <p><strong>Moons:</strong> <span id="planet-moons"></span></p>
-    <p><strong>Habitable:</strong> <span id="planet-habitable"></span></p>
-  </div>
-</div>
-
 </body>
 </html>
